@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>{{ title }}</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            
+            <!--Should work but it will takes time to display it-->
+          <li class="breadcrumb-item" *ngIf="region">
+            <a routerLink="/">Regions - {{region.nom}} </a>
+          </li>
+          
+            <!--Should work but it will takes time to display it-->
+          <li class="breadcrumb-item active" *ngIf="departement">
+            <a routerLink="/regions/{{departement.codeRegion}}/departements">
+              Départements  - {{ departement.nom }}
+            </a>
+          </li>
+          <li class="breadcrumb-item active">
+            Villes
+          </li>
+        </ol>
+      </nav>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Code</th>
+          <th>Département</th>
+          <th>Code Postaux</th>
+          <th>Population</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let city of cities let index=index">
+          <td>
+            {{ city.nom }}
+          </td>
+          <td>
+              {{ city.code }}
+          </td>
+          <td>
+           {{depName[index]}}
+        </td> 
+          <td *ngFor="let codeP of city.codesPostaux" >
+            {{ codeP }}
+        </td>
+        <td>
+            {{ city.population }}
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
